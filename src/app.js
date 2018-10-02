@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const { accounts, users, writeJSON } = require('./data');
 const accountRoutes = require('./routes/accounts');
-const serviceRoutes = require('./routes/services');
+const servicesRoutes = require('./routes/services');
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Account Summary', accounts})
 });
 app.use('/account', accountRoutes);
-app.use('/services', serviceRoutes);
+app.use('/services', servicesRoutes);
 
 app.get('/profile', (req, res) => {
   res.render('profile', { user: users[0] });
